@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Login</title>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideUrlBar, 0);
+    }, false);
+
+    function hideUrlBar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="../static/css/style.css" rel='stylesheet' type='text/css'/>
+    <!--//js-->
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function (c) {
+        $('.close').on('click', function (c) {
+            $('.login-form').fadeOut('slow', function (c) {
+                $('.login-form').remove();
+            });
+        });
+    });
+</script>
+<!--SIGN UP-->
+<h1>家庭监控系统</h1>
+<div class="login-form">
+    <div class="close"></div>
+    <div class="head-info">
+        <label class="lbl-1"> </label>
+        <label class="lbl-2"> </label>
+        <label class="lbl-3"> </label>
+    </div>
+    <div class="clear"></div>
+    <div class="avatar">
+        <img src="../static/images/avatar.png" alt="avatar"/>
+    </div>
+    <form method="post" action="{{ url_for("user.login") }}">
+        <input type="text" class="text" name="username" placeholder="请输入用户名">
+        <div class="key">
+            <input type="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="signin">
+            <input type="submit" value="Login">
+            {% if errmsg %} {# 判断是否有错误信息 #}
+                <div class="error_tip" style="display: block;color: red">{{ errmsg }}</div>
+            {% endif %}
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
