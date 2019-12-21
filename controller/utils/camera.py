@@ -15,6 +15,10 @@ class RecordingThread(threading.Thread):
     def run(self):
         while self.isRunning:
             ret, frame = self.cap.read()
+            print('ret, frame = self.cap.read()---------------------')
+            print(ret)
+            print('-----------------------------------')
+
             if ret:
                 self.out.write(frame)
 
