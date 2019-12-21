@@ -1,5 +1,9 @@
+import os
+
 import cv2
 import threading
+
+output_file = '{home_path}/opencv/video.avi'.format(home_path=os.environ['HOME'])
 
 
 class RecordingThread(threading.Thread):
