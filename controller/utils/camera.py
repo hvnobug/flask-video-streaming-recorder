@@ -46,6 +46,11 @@ class VideoCamera(object):
         self.cap.release()
 
     def get_frame(self):
+
+        print('*------------------------------------------*')
+        print(self.cap)
+        print('*------------------------------------------*')
+
         ret, frame = self.cap.read()
 
         if ret:

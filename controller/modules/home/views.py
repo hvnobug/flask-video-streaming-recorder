@@ -21,10 +21,6 @@ def video_stream():
 
     while True:
         frame = video_camera.get_frame()
-        print('*------------------------------------------*')
-        print(video_camera)
-        print(frame)
-        print('*------------------------------------------*')
 
         if frame is not None:
             global_frame = frame
