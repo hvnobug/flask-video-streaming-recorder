@@ -1,8 +1,8 @@
 from flask import session, render_template, redirect, url_for, Response
 from controller.modules.home import home_blu
+from controller.utils import video_camera
 from controller.utils.camera import VideoCamera
 
-video_camera = None
 global_frame = None
 
 
@@ -18,11 +18,7 @@ def index():
 
 # 获取视频流
 def video_stream():
-    global video_camera
     global global_frame
-
-    if video_camera is None:
-        video_camera = VideoCamera()
 
     while True:
         frame = video_camera.get_frame()
@@ -43,5 +39,4 @@ def video_viewer():
     username = session.get("username")
     if not username:
         return redirect(url_for("user.login"))
-    return Response(video_stream(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(video_stream(), mimetype='multipart/x-mixed-replace; boundary=frame')

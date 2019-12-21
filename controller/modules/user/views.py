@@ -1,10 +1,11 @@
 from flask import session, redirect, url_for, request, render_template, jsonify
 
 from controller.modules.user import user_blu
-from controller.utils.camera import VideoCamera
-
 
 # 登录
+from controller.utils import video_camera
+
+
 @user_blu.route("/login", methods=["GET", "POST"])
 def login():
     username = session.get("username")
@@ -42,10 +43,6 @@ def logout():
 # 录制状态
 @user_blu.route('/record_status', methods=['POST'])
 def record_status():
-    global video_camera
-    if video_camera is None:
-        video_camera = VideoCamera()
-
     json = request.get_json()
 
     status = json['status']

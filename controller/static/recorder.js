@@ -1,5 +1,5 @@
-var buttonRecord = document.getElementById("record");
-var buttonStop = document.getElementById("stop");
+const buttonRecord = document.getElementById("record");
+const buttonStop = document.getElementById("stop");
 
 buttonStop.disabled = true;
 
@@ -9,17 +9,17 @@ buttonRecord.onclick = function () {
     buttonStop.disabled = false;
 
     // 禁用下载链接
-    var downloadLink = document.getElementById("download");
+    const downloadLink = document.getElementById("download");
     downloadLink.text = "";
     downloadLink.href = "";
 
     // XMLHttpRequest
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             alert(xhr.responseText);
         }
-    }
+    };
     xhr.open("POST", "/record_status");
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify({status: "true"}));
@@ -32,7 +32,7 @@ buttonStop.onclick = function () {
     // XMLHttpRequest
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             alert(xhr.responseText);
 
             // 设置下载链接

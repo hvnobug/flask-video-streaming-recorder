@@ -1,6 +1,8 @@
 import cv2
 import threading
 
+output_file = './static/video.avi'
+
 
 class RecordingThread(threading.Thread):
     def __init__(self, name, camera):
@@ -10,7 +12,7 @@ class RecordingThread(threading.Thread):
 
         self.cap = camera
         fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-        self.out = cv2.VideoWriter('./static/video.avi', fourcc, 20.0, (640, 480))
+        self.out = cv2.VideoWriter(output_file, fourcc, 25., (640, 480))
 
     def run(self):
         while self.isRunning:
@@ -51,15 +53,15 @@ class VideoCamera(object):
 
             # 视频录制
             if self.is_record:
-                if self.out == None:
+                if self.out is None:
                     fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-                    self.out = cv2.VideoWriter('./static/video.avi', fourcc, 20.0, (640, 480))
+                    self.out = cv2.VideoWriter(output_file, fourcc, 20.0, (640, 480))
 
                 ret, frame = self.cap.read()
                 if ret:
                     self.out.write(frame)
             else:
-                if self.out != None:
+                if self.out is not None:
                     self.out.release()
                     self.out = None
 
@@ -76,5 +78,5 @@ class VideoCamera(object):
     def stop_record(self):
         self.is_record = False
 
-        if self.recordingThread != None:
+        if self.recordingThread is not None:
             self.recordingThread.stop()
