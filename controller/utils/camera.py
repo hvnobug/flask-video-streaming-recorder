@@ -80,3 +80,6 @@ class VideoCamera(object):
 
         if self.recordingThread is not None:
             self.recordingThread.stop()
+
+
+video_camera = VideoCamera()

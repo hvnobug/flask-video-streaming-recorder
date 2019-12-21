@@ -1,7 +1,6 @@
 from flask import session, render_template, redirect, url_for, Response
 from controller.modules.home import home_blu
-from controller.utils import video_camera
-from controller.utils.camera import VideoCamera
+from controller.utils.camera import video_camera
 
 global_frame = None
 
