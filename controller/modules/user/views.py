@@ -1,9 +1,7 @@
 from flask import session, redirect, url_for, request, render_template, jsonify
 
 from controller.modules.user import user_blu
-
-# 登录
-from controller.utils import video_camera
+from controller.utils.camera import video_camera
 
 
 @user_blu.route("/login", methods=["GET", "POST"])
